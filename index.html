@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le marché de Noël de l'Avent – Société des Hôtels Littéraires</title>
+<style>
+:root{--bois:#8a2e22;--bois2:#6c2118;--boisf:#4a1710;--vert:#2f5a45;--or:#e3b85c;--texte:#2b2622;box-sizing:border-box}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;position:relative;color:var(--texte);font:17px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(circle,#fff 1px,transparent 1.6px) 0 0/97px 97px,radial-gradient(circle,#ffe9a8 1px,transparent 1.6px) 41px 57px/133px 133px,linear-gradient(#0f2238,#1b3f52 55%,#14304a);overflow-x:hidden}
+.toile{height:18px;background:repeating-linear-gradient(90deg,#9b2d22 0 22px,#fff 22px 30px,#2f5a45 30px 38px,#fff 38px 46px)}
+header{background:#fff;text-align:center;padding:24px 20px 18px}
+header img{width:min(320px,78%);height:auto}
+h1{font:700 clamp(1.8rem,5vw,2.8rem)/1.15 Georgia,"Iowan Old Style",serif;margin:14px 0 8px;color:var(--bois2)}
+header p{max-width:60ch;margin:0 auto;color:#5b524b}
+.poutre{height:18px;background:repeating-linear-gradient(135deg,transparent 0 16px,rgba(255,255,255,.1) 16px 18px),var(--bois2);box-shadow:0 3px 0 var(--boisf)}
+.guirlande{position:relative;height:46px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='46'%3E%3Cpath d='M0%2C4 Q75%2C34 150%2C4' stroke='%233f8f64' stroke-width='3' fill='none'/%3E%3Ccircle cx='37' cy='22' r='6' fill='%23e74c3c'/%3E%3Ccircle cx='75' cy='26' r='6' fill='%23f4c542'/%3E%3Ccircle cx='113' cy='22' r='6' fill='%233fb27f'/%3E%3C/svg%3E") repeat-x top/150px 46px}
+.guirlande:after{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='46'%3E%3Ccircle cx='37' cy='22' r='13' fill='%23e74c3c' opacity='.55'/%3E%3Ccircle cx='37' cy='22' r='4' fill='%23fff'/%3E%3Ccircle cx='75' cy='26' r='13' fill='%23f4c542' opacity='.55'/%3E%3Ccircle cx='75' cy='26' r='4' fill='%23fff'/%3E%3Ccircle cx='113' cy='22' r='13' fill='%233fb27f' opacity='.55'/%3E%3Ccircle cx='113' cy='22' r='4' fill='%23fff'/%3E%3C/svg%3E") repeat-x top/150px 46px;animation:scint 1.3s ease-in-out infinite alternate}
+@keyframes scint{from{opacity:.2}to{opacity:1}}
+main{max-width:980px;margin:0 auto;padding:4px 14px 30px;position:relative}
+.deco{text-align:center;font-size:2rem;letter-spacing:.35em;margin:0 0 6px;text-shadow:0 0 14px rgba(255,220,130,.8)}
+#statut{text-align:center;font:italic 1.25rem Georgia,serif;color:#f6dc92;text-shadow:0 0 12px rgba(246,220,146,.6);margin:0 0 24px}
+#grille{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:84px;grid-auto-flow:row dense;gap:12px;list-style:none;margin:0;padding:0}
+@media(min-width:700px){#grille{grid-template-columns:repeat(6,1fr);grid-auto-rows:108px;gap:16px}}
+li.h{grid-row:span 2}li.w{grid-column:span 2}li.g{grid-row:span 2;grid-column:span 2}
+.case{--tente:#c0392b;--b1:var(--bois);--b2:var(--bois2);width:100%;height:100%;border:0;border-radius:8px 8px 3px 3px;color:#f6dfa4;font:700 1.9rem Georgia,serif;cursor:pointer;position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:linear-gradient(rgba(0,0,0,.4),transparent) 0 20px/100% 7px no-repeat,repeating-linear-gradient(90deg,var(--tente) 0 14px,#f7f1e6 14px 28px) 0 0/100% 20px no-repeat,repeating-linear-gradient(90deg,rgba(0,0,0,.1) 0 2px,transparent 2px 9px),linear-gradient(180deg,var(--b1),var(--b2));box-shadow:inset 0 0 0 5px var(--boisf),inset 0 0 0 7px rgba(255,255,255,.12),0 6px 10px rgba(0,0,0,.5);text-shadow:0 2px 2px rgba(0,0,0,.45)}
+li.h .case,li.w .case{font-size:2.4rem}li.g .case{font-size:3.4rem}
+.case:before{content:"";position:absolute;inset:30px 14px 14px;z-index:-1;border:2px solid rgba(0,0,0,.28);border-radius:3px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.case:after{content:"";position:absolute;right:10px;top:56%;width:9px;height:9px;border-radius:50%;background:var(--or);box-shadow:0 1px 2px rgba(0,0,0,.5)}
+.dec{position:absolute;top:27px;left:9px;font-size:.95rem;text-shadow:none}
+li:nth-child(3n) .case{--b1:#3a7258;--b2:#254a39}
+li:nth-child(3n+2) .case{--tente:#2f5a45}
+.case small{font:.7rem system-ui,sans-serif;color:#f1e6cf;text-shadow:none}
+.case.futur{filter:saturate(.5) brightness(.8);opacity:.75;cursor:not-allowed}
+.case.passe{filter:grayscale(.6) brightness(.85);opacity:.55;cursor:default}
+.case.aujourdhui{color:#fff1c4;animation:lueur 1.8s ease-in-out infinite alternate}
+@keyframes lueur{from{box-shadow:inset 0 0 0 5px var(--boisf),0 0 0 3px var(--or),0 0 14px 2px rgba(227,184,92,.5)}to{box-shadow:inset 0 0 0 5px var(--boisf),0 0 0 3px #fff2b8,0 0 30px 8px rgba(255,226,140,.9)}}
+.case:focus-visible{outline:3px solid #8ec5ff;outline-offset:4px}
+.flocon{position:fixed;top:-5vh;color:#fff;opacity:.85;pointer-events:none;z-index:5;animation:chute linear infinite,balance ease-in-out infinite alternate}
+@keyframes chute{to{top:105vh}}@keyframes balance{from{margin-left:-14px}to{margin-left:14px}}
+@media(prefers-reduced-motion:reduce){.guirlande:after,.case.aujourdhui{animation:none}}
+dialog{border:0;border-radius:6px;padding:0;width:min(540px,94vw);max-height:92vh;background:#fffaf0;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+dialog::backdrop{background:rgba(10,20,35,.75)}
+.int{padding:22px 24px 24px}
+.int:before{content:"";display:block;height:14px;margin:-22px -24px 16px;background:repeating-linear-gradient(45deg,#c0392b 0 12px,#fff 12px 24px)}
+dialog h2{font:700 1.5rem Georgia,serif;margin:0 0 12px;color:var(--bois2)}
+#media img,#media video{width:100%;height:auto;max-height:46vh;object-fit:cover;border-radius:6px;display:block}
+#media iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:6px}
+#media{margin-bottom:14px}.leg{font-size:.85rem;color:#6b625a;margin:6px 0 0;font-style:italic}
+.q{font:1.2rem/1.5 Georgia,serif;background:#f3e8d3;border-left:4px solid var(--or);padding:12px 14px;margin:0 0 18px}
+label{display:block;font-weight:600;font-size:.92rem;margin:12px 0 4px}
+input{width:100%;font:inherit;padding:10px;border:1px solid #c4b8a6;border-radius:6px;background:#fff}
+.btns{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+button.act{font:600 1rem system-ui;padding:11px 20px;border-radius:6px;border:0;background:var(--bois);color:#fff;cursor:pointer}
+button.sec{background:none;color:var(--bois2);border:1px solid #c4b8a6}
+#msg{margin:14px 0 0;font-weight:600}
+footer{max-width:62ch;margin:0 auto;padding:10px 16px 26px;font-size:.88rem;color:#cdd8e3;text-align:center}
+.sol{background:#f4f8fc;border-radius:60% 40% 0 0/50px 40px 0 0;font-size:2.4rem;letter-spacing:.3em;padding:30px 10px 16px;text-align:center;box-shadow:0 -6px 22px rgba(255,255,255,.25)}
+body:before{content:"";position:absolute;top:0;left:0;right:0;height:900px;z-index:0;pointer-events:none;background:radial-gradient(ellipse 50% 40% at 25% 0,rgba(70,255,170,.32),transparent 70%),radial-gradient(ellipse 45% 35% at 75% 5%,rgba(160,110,255,.28),transparent 70%);animation:aurore 9s ease-in-out infinite alternate}
+@keyframes aurore{from{opacity:.45;transform:translateX(-3%)}to{opacity:1;transform:translateX(3%)}}
+@media(prefers-reduced-motion:reduce){body:before{animation:none}}
+header,.toile,.poutre,main,footer,.village,.sol{position:relative;z-index:1}
+.son{position:fixed;right:12px;bottom:12px;z-index:9;border:0;border-radius:999px;padding:10px 16px;background:#f6dc92;color:#4a1710;font:600 .9rem system-ui;box-shadow:0 4px 12px rgba(0,0,0,.4);cursor:pointer}
+.hier{max-width:640px;margin:0 auto 22px;padding:12px 16px;border-left:4px solid var(--or);border-radius:8px;background:rgba(255,255,255,.12);color:#fff;text-align:center;font-size:.98rem}
+
+/* ===== Aquarelle : papier, couleurs des illustrations SHL ; portes de marché peintes ===== */
+:root{--grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .32 0 0 0 0 .22 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='white' filter='url%28%23n%29'/%3E%3C/svg%3E")}
+body{background:var(--grain),linear-gradient(#f9f5ec,#f3ebdb)}
+body:before{height:1000px;animation:none;background:radial-gradient(ellipse 40% 240px at 85% 130px,rgba(159,184,207,.55),transparent 70%),radial-gradient(ellipse 36% 220px at 12% 160px,rgba(234,181,173,.5),transparent 70%),radial-gradient(ellipse 45% 250px at 50% 540px,rgba(217,183,126,.4),transparent 70%),radial-gradient(ellipse 35% 220px at 14% 780px,rgba(143,174,148,.4),transparent 70%)}
+.toile{height:12px;background:repeating-linear-gradient(135deg,#c9776a 0 12px,#fffaf0 12px 24px,#4f7a86 24px 36px,#fffaf0 36px 48px)}
+.poutre{background:repeating-linear-gradient(135deg,transparent 0 16px,rgba(255,255,255,.1) 16px 18px),#6a4632;box-shadow:0 3px 0 #4a2f20}
+header{background:transparent;padding:22px 20px 10px}
+header img:not(.illus){mix-blend-mode:multiply}
+h1{color:#35596a;font-style:italic}
+.deco{text-shadow:none}
+#statut{color:#a44f42;text-shadow:none}
+.hier{background:rgba(255,255,255,.6);color:var(--texte);border-left-color:#c9776a}
+.flocon{color:#a9c1d4}
+footer{color:#6b5d4f}
+.sol{background:linear-gradient(#f4f8fb,#fff);box-shadow:none;border-top:2px solid rgba(160,190,210,.5)}
+li .case{--txt:#fff4dc;color:var(--txt);text-shadow:0 1px 2px rgba(40,25,15,.5);background:var(--grain),linear-gradient(rgba(0,0,0,.25),transparent) 0 20px/100% 7px no-repeat,repeating-linear-gradient(90deg,var(--tente) 0 14px,#f7f1e6 14px 28px) 0 0/100% 20px no-repeat,repeating-linear-gradient(90deg,rgba(60,40,30,.09) 0 1px,transparent 1px 9px),radial-gradient(circle at 30% 30%,rgba(255,255,255,.3),transparent 60%),linear-gradient(180deg,var(--b1),var(--b2));box-shadow:inset 0 0 0 4px #6a4632,inset 0 0 0 5px rgba(255,255,255,.22),inset 0 0 24px rgba(0,0,0,.14),0 5px 9px rgba(70,50,30,.32)}
+li:nth-child(6n+1) .case{--b1:#4f7a86;--b2:#35596a;--tente:#c9776a;--txt:#fff4dc}
+li:nth-child(6n+2) .case{--b1:#b4685a;--b2:#8f4a40;--tente:#4f7a86;--txt:#fff4dc}
+li:nth-child(6n+3) .case{--b1:#8a5e44;--b2:#6a4632;--tente:#c9776a;--txt:#fff4dc}
+li:nth-child(6n+4) .case{--b1:#86a8c4;--b2:#6089ab;--tente:#d9b77e;--txt:#2d1c12}
+li:nth-child(6n+5) .case{--b1:#9ab59d;--b2:#6f9578;--tente:#c9776a;--txt:#2d1c12}
+li:nth-child(6n) .case{--b1:#dcb56f;--b2:#b98d4a;--tente:#4f7a86;--txt:#2d1c12}
+li .case small{color:inherit;opacity:.85}
+li .case.aujourdhui{color:var(--txt)}
+#choix label{display:block;padding:10px 12px;margin:6px 0;border:1px solid #c4b8a6;border-radius:8px;background:#fff;cursor:pointer;font-weight:400;font-size:1rem}#choix input{width:auto;margin-right:6px}
+#intro p{max-width:60ch;margin:0 auto 10px;color:#5b524b}
+#media img{object-fit:contain;max-height:56vh;background:#f3e8d3}
+</style>
+</head>
+<body>
+<div class="toile"></div>
+<header>
+  <img src="logo.png" alt="Société des Hôtels Littéraires">
+  <h1>Le marché de Noël de l'Avent</h1>
+  <div id="intro"></div>
+</header>
+<div class="poutre"></div><div class="guirlande" aria-hidden="true"></div>
+<main>
+  <div class="deco" aria-hidden="true">🌲 🛷 🦌 ⭐ 🥨 🍪 🕯️ 🦌 🌲</div>
+  <p id="statut"></p>
+  <div id="hier" class="hier" hidden></div>
+  <ol id="grille"></ol>
+</main>
+<div class="guirlande" aria-hidden="true"></div>
+<div class="sol" aria-hidden="true">🎄 🎁 🎅 🎁 🎄 🍪 🎄 🎁 ⛄ 🎄</div>
+
+<dialog id="boite"><div class="int">
+  <h2 id="titre"></h2>
+  <div id="media"></div>
+  <p class="q" id="question"></p>
+  <form id="formulaire">
+    <label for="nom">Votre prénom et nom</label><input id="nom" required autocomplete="name">
+    <label for="hotel">Votre hôtel</label><input id="hotel" required>
+    <div id="champ"><label for="reponse">Votre réponse</label><input id="reponse" required autocomplete="off"></div>
+    <div id="choix" role="radiogroup" aria-label="Votre réponse" hidden></div>
+    <div class="btns"><button class="act" type="submit">Je participe</button></div>
+  </form>
+  <p id="msg" role="status"></p>
+  <div class="btns"><button class="act sec" type="button" id="fermer">Fermer</button></div>
+</div></dialog>
+
+<audio id="musique" src="musique.mp3" loop preload="metadata"></audio>
+<button id="son" class="son" type="button" hidden>🔊 Musique</button>
+<script>
+/* ===== À RÉGLER (voir le guide) ===== */
+const CONFIG = {
+  annee: 2026,
+  mois: 11,                            // 11 = novembre (VERSION TEST). Mettre 12 pour décembre
+  publicUrl: "",                       // adresse de l'onglet « Public » publié en CSV (voir le guide)
+  formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfH0X1GfZ9lpIKq0LhMzMshWfI3A0O_0kqWgkFo7t786DUiaw/formResponse",
+  champs: { jour: "entry.978847565", nom: "entry.836249731", hotel: "entry.2034684251", reponse: "entry.1116337954" }
+};
+/* ===================================== */
+const nomMois = ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"][CONFIG.mois - 1];
+const JEUX = [
+ {t:"libre", q:"Quel conte d'Andersen met en scène une enfant qui grelotte un soir de réveillon en vendant des allumettes ?"},
+ {t:"libre", q:"Je résous les enquêtes les plus mystérieuses grâce à mon sens de l’observation et de la déduction. J’habite au 221B Baker Street, à Londres, et mon fidèle compagnon est le docteur Watson. Qui suis-je ?"},
+ {t:"libre", q:"Sous quel pseudonyme est connue Aurore Dupin ?"},
+ {t:"libre", q:"Dans quelle ville la famille de Kevin doit-elle se rendre en avion dans Maman, j’ai raté l’avion ?"},
+ {t:"qcm", q:"Dans quel département la SHL pose ses valises avec son nouvel hôtel à Brive-la-Gaillarde ?", o:["La Corrèze","La Creuse","La Dordogne","La Vienne"]},
+ {t:"libre", q:"Remettez en ordre cet anagramme pour former un mot : VIRLE"},
+ {t:"ouvert", q:"À qui aimeriez-vous que le prochain hôtel littéraire soit dédié ? (Il n'y a pas de mauvaises réponses aujourd'hui 🤓)"},
+ {t:"qcm", q:"Dans quel pays le manguier et le bananier sont les arbres décorés à Noël, à l'instar du sapin en France ?", o:["L'Inde","Les Seychelles","L'Afrique du Sud","La Thaïlande"]},
+ {t:"libre", q:"Quel grand rendez-vous littéraire a lieu chaque année à Brive-la-Gaillarde en novembre ?"},
+ {t:"libre", q:"Complètez cette phrase de Proust : \"Longtemps, je me suis couché de bonne...\""},
+ {t:"qcm", q:"Quelle écrivaine est à l'origine de textes sur Noël publiés dans la presse entre 1909 et 1948 puis dans le recueil Cadeaux de Noël ?", o:["Marguerite Duras","Colette","Simone de Beauvoir","Nathalie Sarraute"]},
+ {t:"qcm", q:"Quel animal décore le sapin ukrainien pour porter chance ?", o:["Une araignée","Une biche","Un castor","Un dauphin"]},
+ {t:"qcm", q:"Quel roman débute par ces mots «Mr et Mrs Dursley, qui habitaient au 4, Privet Drive, avaient toujours affirmé avec la plus grande fierté qu'ils étaient parfaitement normaux, merci pour eux. » ?", o:["Les Misérables","Le Petit Prince","Harry Potter à l'école des sorciers","1984"]},
+ {t:"qcm", q:"Quelle spécialité de Brive est connue pour sa couleur violette ?", o:["Le caramel","La brioche","Le fromage","La moutarde"]},
+ {t:"qcm", q:"Dans quelle ville alsacienne la plus ancienne mention écrite d'un sapin de Noël, en 1521, a-t-elle été conservée ?", o:["Colmar","Sélestat","Riquewihr","Kaysersberg"]},
+ {t:"libre", q:"Combien de livres sont posés dans cette chambre ? (les affiches et les cadres ne comptent pas)"},
+ {t:"qcm", q:"Que cache-t-on la veille de Noël en Norvège ?", o:["Les couteaux","Les chocolats","Les balais","Les écharpes"]},
+ {t:"libre", q:"Comment s'appellent les habitants de Brive-la-Gaillarde ?"},
+ {t:"qcm", q:"Quel fast-food est particulièrement populaire pour le repas de Noël au Japon ?", o:["McDonald's","KFC","Subway","Burger King"]},
+ {t:"qcm", q:"Dans Un chant de Noël de Charles Dickens, quel est le prénom du personnage principal, connu pour son avarice ?", o:["Edward","Ebenezer","Ernest","Elliot"]},
+ {t:"ouvert", q:"Si l'établissement où vous travaillez était un film de Noël, comment s'appellerait-il ? Laissez parler votre imagination 💭"},
+ {t:"libre", q:"En Provence, combien de desserts composent le grand dessert de Noël ?"},
+ {t:"libre", q:"Dans Le Grinch, de quelle couleur est le personnage qui déteste Noël ?"},
+ {t:"qcm", q:"Que s'offre-t-on traditionnellement le soir du 24 décembre en Islande ?", o:["Des chocolats","Des fleurs séchées","Des galets","Des livres"]}
+];
+/* Photos et vidéos : décommentez et adaptez les lignes pour les jours choisis */
+const MEDIAS = {
+  16: { type: "image", src: "medias/chambre.jpeg", legende: "Une chambre de nos hôtels littéraires (touchez la photo pour l'agrandir)" },
+  // 5:  { type: "image",   src: "medias/hotel-brive-1.jpg", legende: "Notre nouvel hôtel à Brive-la-Gaillarde" },
+  // 12: { type: "video",   src: "medias/hotel-brive.mp4",   legende: "Visite de l'hôtel" },
+  // 18: { type: "youtube", id: "IDENTIFIANT_YOUTUBE",       legende: "Dans les coulisses de l'hôtel" }
+};
+/* Formats : "libre" et "ouvert" = texte à écrire ; "qcm" = choix parmi les options (o) ; "vf" = Vrai ou Faux */
+function preparerSaisie(jeu){
+  const opts = jeu.t === "vf" ? ["Vrai", "Faux"] : (jeu.o || []);
+  const champ = document.getElementById("champ"), choix = document.getElementById("choix"), rep = document.getElementById("reponse");
+  choix.innerHTML = "";
+  if (!opts.length){ champ.hidden = false; rep.required = true; choix.hidden = true; return; }
+  champ.hidden = true; rep.required = false; choix.hidden = false;
+  opts.forEach((o, i) => { const l = document.createElement("label"), r = document.createElement("input"); r.type = "radio"; r.name = "choix"; r.value = o; r.required = i === 0; l.appendChild(r); l.appendChild(document.createTextNode(" " + o)); choix.appendChild(l); });
+}
+function reponseSaisie(){ const r = document.querySelector('input[name="choix"]:checked'); return r ? r.value : document.getElementById("reponse").value.trim(); }
+function afficherMedia(j){
+  const z = document.getElementById("media"); z.innerHTML = "";
+  const m = MEDIAS[j]; if (!m) return; let el;
+  if (m.type === "image"){ el = document.createElement("img"); el.src = m.src; el.alt = m.legende || ""; el.style.cursor = "zoom-in"; el.addEventListener("click", () => window.open(m.src, "_blank")); }
+  else if (m.type === "video"){ el = document.createElement("video"); el.src = m.src; el.controls = true; el.addEventListener("play", () => { if (mus && !mus.paused) mus.pause(); }); el.preload = "metadata"; el.playsInline = true; }
+  else if (m.type === "youtube"){ el = document.createElement("iframe"); el.src = "https://www.youtube-nocookie.com/embed/" + m.id; el.allowFullscreen = true; el.title = m.legende || "Vidéo"; }
+  else return;
+  z.appendChild(el);
+  if (m.legende){ const c = document.createElement("p"); c.className = "leg"; c.textContent = m.legende; z.appendChild(c); }
+}
+const params = new URLSearchParams(location.search), test = params.has("test");
+let maintenant = new Date(), simulee = false;
+if (params.get("date")){ const s = new Date(params.get("date") + "T12:00:00"); if (!isNaN(s)){ maintenant = s; simulee = true; } }
+const nbJours = JEUX.length;
+function etat(j){
+  if (test) return "aujourdhui";
+  const d = new Date(CONFIG.annee, CONFIG.mois - 1, j), f = new Date(CONFIG.annee, CONFIG.mois - 1, j + 1);
+  return maintenant < d ? "futur" : maintenant >= f ? "passe" : "aujourdhui";
+}
+const cle = j => "shl_avent_" + CONFIG.annee + "_" + CONFIG.mois + "_" + j;
+function lire(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+function ecrire(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+
+const FORMES = ["","h","w","w","h","","g","w","w","h","w","","g","","w","w","","h","","w","g","w","h",""];
+const DECOS = ["🥨","⭐","🎁","🔔","🦌","🕯️","🍪","🍬"];
+const hasard = (function(a){ return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; })(2026);  /* 2026 = graine : changez-la pour un autre ordre */
+const ordre = Array.from({length: nbJours}, (_, i) => i + 1);
+for (let i = ordre.length - 1; i > 0; i--){ const k = Math.floor(hasard() * (i + 1)); const x = ordre[i]; ordre[i] = ordre[k]; ordre[k] = x; }
+const grille = document.getElementById("grille"), boite = document.getElementById("boite");
+let jourCourant = 0, auj = 0;
+for (let idx = 0; idx < nbJours; idx++){
+  const j = ordre[idx], e = etat(j), li = document.createElement("li"), b = document.createElement("button");
+  li.className = FORMES[idx];
+  b.className = "case " + e; b.type = "button";
+  b.innerHTML = j + (e === "aujourdhui" && !test ? "<small>À ouvrir</small>" : e === "passe" ? "<small>Déjà ouverte</small>" : "");
+  if (e === "aujourdhui" && !test) auj = j;
+  b.setAttribute("aria-label", "Case du " + j + " " + nomMois + (e === "futur" ? ", pas encore ouverte" : e === "passe" ? ", déjà ouverte" : ""));
+  b.addEventListener("click", () => { if (e === "aujourdhui") ouvrir(j); else if (e === "passe") ouvrirPasse(j); });
+  const dd = document.createElement("span"); dd.className = "dec"; dd.setAttribute("aria-hidden", "true"); dd.textContent = DECOS[idx % DECOS.length]; b.appendChild(dd);
+  li.appendChild(b); grille.appendChild(li);
+}
+const st = document.getElementById("statut");
+st.textContent = test ? "Mode test : toutes les cases sont ouvertes."
+  : auj ? "Aujourd'hui, c'est la case n° " + auj + ". Bonne chance !"
+  : maintenant < new Date(CONFIG.annee, CONFIG.mois - 1, 1) ? "Rendez-vous le 1er " + nomMois + " pour ouvrir la première case."
+  : "Le calendrier est terminé. Merci à toutes et à tous d'avoir joué !";
+if (simulee && !test) st.textContent += " (date simulée : " + maintenant.toLocaleDateString("fr-FR") + ")";
+
+/* Réponses et gagnants de la veille : lus dans l'onglet « Public » du Sheet, alimenté après chaque tirage */
+const PUBLIC = {};
+function lireCsv(t){
+  const rows = []; let r = [], c = "", q = false;
+  for (let i = 0; i < t.length; i++){ const ch = t[i];
+    if (q){ if (ch === '"'){ if (t[i + 1] === '"'){ c += '"'; i++; } else q = false; } else c += ch; }
+    else if (ch === '"') q = true;
+    else if (ch === ","){ r.push(c); c = ""; }
+    else if (ch === "\n"){ r.push(c); rows.push(r); r = []; c = ""; }
+    else if (ch !== "\r") c += ch; }
+  if (c !== "" || r.length){ r.push(c); rows.push(r); }
+  return rows;
+}
+function majHier(){
+  const z = document.getElementById("hier"), d = PUBLIC[auj - 1];
+  if (!auj || !d){ z.hidden = true; return; }
+  z.textContent = "Hier, case n° " + (auj - 1) + " : « " + JEUX[auj - 2].q + " » Réponse : " + d.reponse + ".";
+  z.hidden = false;
+}
+async function chargerPublic(){
+  if (!CONFIG.publicUrl) return;
+  try {
+    const r = await fetch(CONFIG.publicUrl + (CONFIG.publicUrl.indexOf("?") < 0 ? "?" : "&") + "t=" + Date.now());
+    lireCsv(await r.text()).forEach(l => { const j = Number(l[0]); if (j) PUBLIC[j] = { reponse: (l[1] || "").trim() }; });
+    majHier();
+  } catch(e){}
+}
+function ouvrirPasse(j){
+  jourCourant = j;
+  document.getElementById("titre").textContent = "Case n° " + j + " : déjà ouverte";
+  document.getElementById("question").textContent = JEUX[j - 1].q;
+  afficherMedia(j);
+  f.hidden = true;
+  const d = PUBLIC[j];
+  msg.textContent = "Case déjà ouverte : les participations sont closes. " + (d ? "Réponse : " + d.reponse : "La réponse sera dévoilée après le tirage.");
+  boite.showModal();
+}
+chargerPublic();
+const f = document.getElementById("formulaire"), msg = document.getElementById("msg");
+function ouvrir(j){
+  jourCourant = j; msg.textContent = "";
+  document.getElementById("titre").textContent = "Case du " + j + " " + nomMois;
+  document.getElementById("question").textContent = JEUX[j - 1].q;
+  afficherMedia(j);
+  document.getElementById("reponse").value = ""; preparerSaisie(JEUX[j - 1]);
+  document.getElementById("nom").value = lire("shl_avent_nom") || "";
+  document.getElementById("hotel").value = lire("shl_avent_hotel") || "";
+  const deja = !test && lire(cle(j));
+  f.hidden = !!deja;
+  if (deja) msg.textContent = "Vous avez déjà participé aujourd'hui. Réponse du tirage demain !";
+  boite.showModal();
+}
+document.getElementById("fermer").onclick = () => boite.close();
+boite.addEventListener("click", ev => { if (ev.target === boite) boite.close(); });
+boite.addEventListener("close", () => { document.getElementById("media").innerHTML = ""; });
+f.addEventListener("submit", async ev => {
+  ev.preventDefault();
+  if (!CONFIG.formUrl){ msg.textContent = "Mode démo : le formulaire n'est pas encore relié, rien n'a été envoyé."; return; }
+  const d = new FormData(), c = CONFIG.champs;
+  d.append(c.jour, jourCourant);
+  d.append(c.nom, f.nom.value.trim()); d.append(c.hotel, f.hotel.value.trim()); d.append(c.reponse, reponseSaisie());
+  try {
+    await fetch(CONFIG.formUrl, { method: "POST", mode: "no-cors", body: d });
+    ecrire(cle(jourCourant), "1"); ecrire("shl_avent_nom", f.nom.value.trim()); ecrire("shl_avent_hotel", f.hotel.value.trim());
+    f.hidden = true; msg.textContent = "Merci ! Votre réponse est bien enregistrée. Tirage au sort demain matin.";
+  } catch(e){ msg.textContent = "L'envoi n'a pas fonctionné. Vérifiez votre connexion et réessayez."; }
+});
+/* Texte d'accueil : annonce avant le 1er du mois, puis texte de bienvenue */
+const debut = new Date(CONFIG.annee, CONFIG.mois - 1, 1), avant = !test && maintenant < debut;
+const TEXTES = avant
+  ? ["Les lumières scintillent, les guirlandes s’allument… notre marché de Noël de l’Avent ouvre bientôt ses portes ! ✨",
+     "Du 1er au 24 " + nomMois + ", poussez chaque jour la porte d’un nouveau chalet, percez ses énigmes et répondez à ses questions. Chaque jour, le hasard désigne une personne chanceuse qui repart avec une surprise.",
+     "Nous vous attendons avec impatience : rendez-vous dès le 1er " + nomMois + "."]
+  : ["Bienvenue au marché de Noël de l’Avent. Du 1er au 24 " + nomMois + ", poussez chaque jour la porte d’un nouveau chalet, percez ses énigmes et répondez à ses questions. Chaque jour, le hasard désigne une personne chanceuse qui repart avec une surprise."];
+TEXTES.forEach(t => { const q = document.createElement("p"); q.textContent = t; document.getElementById("intro").appendChild(q); });
+if (avant) document.getElementById("statut").hidden = true;
+/* Musique : les navigateurs interdisent le son automatique ; elle démarre au premier clic ou toucher sur la page */
+const mus = document.getElementById("musique"), son = document.getElementById("son");
+mus.volume = 0.35;
+let coupe = lire("shl_avent_son") === "off";
+function majSon(){ son.textContent = mus.paused ? "🔇 Activer la musique" : "🔊 Couper la musique"; }
+function jouer(){ if (!coupe) mus.play().then(majSon).catch(() => {}); }
+function premier(ev){ if (son.contains(ev.target)) return; removeEventListener("pointerdown", premier); removeEventListener("keydown", premier); jouer(); }
+mus.addEventListener("loadedmetadata", () => { son.hidden = false; majSon(); });
+mus.addEventListener("error", () => { son.hidden = true; });
+mus.addEventListener("play", majSon); mus.addEventListener("pause", majSon);
+addEventListener("pointerdown", premier); addEventListener("keydown", premier);
+son.addEventListener("click", () => { if (mus.paused){ coupe = false; ecrire("shl_avent_son", "on"); mus.play().catch(() => {}); } else { coupe = true; ecrire("shl_avent_son", "off"); mus.pause(); } });
+jouer();
+if (!matchMedia("(prefers-reduced-motion: reduce)").matches){
+  for (let i = 0; i < 45; i++){
+    const f = document.createElement("span"); f.className = "flocon"; f.setAttribute("aria-hidden", "true"); f.textContent = i % 4 ? "•" : "❄";
+    f.style.cssText = "left:" + Math.random() * 100 + "vw;font-size:" + (8 + Math.random() * 14) + "px;animation-duration:" + (9 + Math.random() * 10) + "s," + (3 + Math.random() * 3) + "s;animation-delay:-" + Math.random() * 14 + "s,0s";
+    document.body.appendChild(f);
+  }
+}
+</script>
+</body>
+</html>
