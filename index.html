@@ -311,8 +311,8 @@ let coupe = lire("shl_avent_son") === "off";
 function majSon(){ son.textContent = mus.paused ? "🔇 Activer la musique" : "🔊 Couper la musique"; }
 function jouer(){ if (!coupe) mus.play().then(majSon).catch(() => {}); }
 function premier(ev){ if (son.contains(ev.target)) return; removeEventListener("pointerdown", premier); removeEventListener("keydown", premier); jouer(); }
-mus.addEventListener("loadedmetadata", () => { son.hidden = false; majSon(); });
-mus.addEventListener("error", () => { son.hidden = true; });
+son.hidden = false; majSon();   /* le bouton est toujours visible : s'il indique « indisponible », le fichier musique.mp3 est introuvable */
+mus.addEventListener("error", () => { son.textContent = "🔇 Musique indisponible"; son.disabled = true; });
 mus.addEventListener("play", majSon); mus.addEventListener("pause", majSon);
 addEventListener("pointerdown", premier); addEventListener("keydown", premier);
 son.addEventListener("click", () => { if (mus.paused){ coupe = false; ecrire("shl_avent_son", "on"); mus.play().catch(() => {}); } else { coupe = true; ecrire("shl_avent_son", "off"); mus.pause(); } });
