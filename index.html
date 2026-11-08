@@ -310,11 +310,12 @@ mus.volume = 0.35;
 let coupe = lire("shl_avent_son") === "off";
 function majSon(){ son.textContent = mus.paused ? "🔇 Activer la musique" : "🔊 Couper la musique"; }
 function jouer(){ if (!coupe) mus.play().then(majSon).catch(() => {}); }
-function premier(ev){ if (son.contains(ev.target)) return; removeEventListener("pointerdown", premier); removeEventListener("keydown", premier); jouer(); }
+const GESTES = ["pointerup", "click", "keydown", "touchend"];   /* gestes que les navigateurs (ordinateur et téléphone) acceptent pour lancer un son */
+function premier(ev){ if (coupe || son.contains(ev.target)) return; mus.play().then(() => { GESTES.forEach(g => removeEventListener(g, premier)); majSon(); }).catch(() => {}); }
 son.hidden = false; majSon();   /* le bouton est toujours visible : s'il indique « indisponible », le fichier musique.mp3 est introuvable */
 mus.addEventListener("error", () => { son.textContent = "🔇 Musique indisponible"; son.disabled = true; });
 mus.addEventListener("play", majSon); mus.addEventListener("pause", majSon);
-addEventListener("pointerdown", premier); addEventListener("keydown", premier);
+GESTES.forEach(g => addEventListener(g, premier));
 son.addEventListener("click", () => { if (mus.paused){ coupe = false; ecrire("shl_avent_son", "on"); mus.play().catch(() => {}); } else { coupe = true; ecrire("shl_avent_son", "off"); mus.pause(); } });
 jouer();
 if (!matchMedia("(prefers-reduced-motion: reduce)").matches){
