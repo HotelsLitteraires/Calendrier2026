@@ -253,7 +253,7 @@ async function chargerPublic(){
   if (!CONFIG.publicUrl) return;
   try {
     const r = await fetch(CONFIG.publicUrl + (CONFIG.publicUrl.indexOf("?") < 0 ? "?" : "&") + "t=" + Date.now());
-    lireCsv(await r.text()).forEach(l => { const j = Number(l[0]); if (j) PUBLIC[j] = { reponse: (l[1] || "").trim() }; });
+    lireCsv(await r.text()).forEach(l => { const j = Number(l[0]); if (j) PUBLIC[j] = { reponse: (l[1] || "").split("|")[0].trim() }; });
     majHier();
   } catch(e){}
 }
