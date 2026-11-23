@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<!-- Version décembre : correctif de l'affichage des réponses (v4, avec mode diagnostic) -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Le marché de Noël de l'Avent – Société des Hôtels Littéraires</title>
@@ -253,9 +254,11 @@ async function chargerPublic(){
   if (!CONFIG.publicUrl) return;
   try {
     const r = await fetch(CONFIG.publicUrl + (CONFIG.publicUrl.indexOf("?") < 0 ? "?" : "&") + "t=" + Date.now());
-    lireCsv(await r.text()).forEach(l => { const j = Number(l[0]); if (j) PUBLIC[j] = { reponse: (l[1] || "").split("|")[0].trim() }; });
+    const brut = await r.text();
+    if (testsPossibles && params.has("diag")){ const pre = document.createElement("pre"); pre.style.cssText = "white-space:pre-wrap;background:#fff;border:2px solid #c9776a;padding:10px;margin:16px;font-size:12px;position:relative;z-index:2"; pre.textContent = "DIAGNOSTIC · version v4\nDonnées lues dans l'onglet Public :\n" + brut.slice(0, 900); document.body.appendChild(pre); }
+    lireCsv(brut).forEach(l => { const j = Number(l[0]); if (j) PUBLIC[j] = { reponse: (l[1] || "").split("|")[0].trim() }; });
     majHier();
-  } catch(e){}
+  } catch(e){ if (testsPossibles && params.has("diag")){ const pre = document.createElement("pre"); pre.style.cssText = "background:#fff;border:2px solid #c9776a;padding:10px;margin:16px;position:relative;z-index:2"; pre.textContent = "DIAGNOSTIC · version v4\nÉchec de lecture de l'onglet Public : " + e; document.body.appendChild(pre); } }
 }
 function ouvrirPasse(j){
   jourCourant = j;
