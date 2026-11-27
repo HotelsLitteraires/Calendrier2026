@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<!-- Version décembre : correctif de l'affichage des réponses (v4, avec mode diagnostic) -->
+<!-- Version décembre : correctif de l'affichage des réponses (v5, avec mode diagnostic et garde-fou sur l'onglet publié) -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Le marché de Noël de l'Avent – Société des Hôtels Littéraires</title>
@@ -132,7 +132,7 @@ li .case.aujourdhui{color:var(--txt)}
 const CONFIG = {
   annee: 2026,
   mois: 12,                            // 12 = décembre (VERSION OFFICIELLE)
-  publicUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSTTAFgsYbva1nhd-hEyomHrCvdRyl34EoSzxQ2ZmsaUYF-sAG7bAbtd6b3ENAknFyvbOkfuIJhv_ZZ/pub?gid=815777316&single=true&output=csv",
+  publicUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSTTAFgsYbva1nhd-hEyomHrCvdRyl34EoSzxQ2ZmsaUYF-sAG7bAbtd6b3ENAknFyvbOkfuIJhv_ZZ/pub?gid=372072304&single=true&output=csv",
   formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf1VDaujzgsxCr4bAMoacPB_KA_QFtht4pW5C77Osa6lClRiQ/formResponse",
   champs: { jour: "entry.1762822025", nom: "entry.491403614", hotel: "entry.1473419096", reponse: "entry.1998091533" }
 };
@@ -254,11 +254,12 @@ async function chargerPublic(){
   if (!CONFIG.publicUrl) return;
   try {
     const r = await fetch(CONFIG.publicUrl + (CONFIG.publicUrl.indexOf("?") < 0 ? "?" : "&") + "t=" + Date.now());
-    const brut = await r.text();
-    if (testsPossibles && params.has("diag")){ const pre = document.createElement("pre"); pre.style.cssText = "white-space:pre-wrap;background:#fff;border:2px solid #c9776a;padding:10px;margin:16px;font-size:12px;position:relative;z-index:2"; pre.textContent = "DIAGNOSTIC · version v4\nDonnées lues dans l'onglet Public :\n" + brut.slice(0, 900); document.body.appendChild(pre); }
-    lireCsv(brut).forEach(l => { const j = Number(l[0]); if (j) PUBLIC[j] = { reponse: (l[1] || "").split("|")[0].trim() }; });
+    const brut = await r.text(), lignes = lireCsv(brut), bon = (((lignes[0] || [])[1]) || "").trim().toLowerCase() === "reponse";
+    if (testsPossibles && params.has("diag")){ const pre = document.createElement("pre"); pre.style.cssText = "white-space:pre-wrap;background:#fff;border:2px solid #c9776a;padding:10px;margin:16px;font-size:12px;position:relative;z-index:2"; pre.textContent = "DIAGNOSTIC · version v5\nDonnées lues dans l'onglet Public :\n" + (bon ? "✅ Onglet correct\n" : "❌ MAUVAIS ONGLET PUBLIÉ : la 1re ligne devrait être « jour,reponse »\n") + brut.slice(0, 900); document.body.appendChild(pre); }
+    if (!bon) return;   /* mauvais onglet publié : on n'utilise rien */
+    lignes.forEach(l => { const j = Number(l[0]); if (j) PUBLIC[j] = { reponse: (l[1] || "").split("|")[0].trim() }; });
     majHier();
-  } catch(e){ if (testsPossibles && params.has("diag")){ const pre = document.createElement("pre"); pre.style.cssText = "background:#fff;border:2px solid #c9776a;padding:10px;margin:16px;position:relative;z-index:2"; pre.textContent = "DIAGNOSTIC · version v4\nÉchec de lecture de l'onglet Public : " + e; document.body.appendChild(pre); } }
+  } catch(e){ if (testsPossibles && params.has("diag")){ const pre = document.createElement("pre"); pre.style.cssText = "background:#fff;border:2px solid #c9776a;padding:10px;margin:16px;position:relative;z-index:2"; pre.textContent = "DIAGNOSTIC · version v5\nÉchec de lecture de l'onglet Public : " + e; document.body.appendChild(pre); } }
 }
 function ouvrirPasse(j){
   jourCourant = j;
